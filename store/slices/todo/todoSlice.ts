@@ -3,7 +3,7 @@ import {createSlice} from "@reduxjs/toolkit";
 type Todo = {
     id: number,
     content: string,
-    completedAt: Date | null
+    completedAt: string | null
 }
 
 type TodoState = {
@@ -11,7 +11,7 @@ type TodoState = {
 }
 
 const initialState: TodoState = {
-    todos: []
+    todos: [{id: 1, content: "mytodo", completedAt: null}, {id: 2, content: "mytodo2", completedAt: new Date().toISOString()}]
 }
 
 export const todoSlice = createSlice({

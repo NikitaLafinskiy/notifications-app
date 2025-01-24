@@ -1,7 +1,7 @@
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native'
 import {Href, Link, Stack} from 'expo-router'
 import {Pressable, useColorScheme} from 'react-native'
-import {TamaguiProvider, Theme} from 'tamagui'
+import {TamaguiProvider} from 'tamagui'
 import AntDesign from '@expo/vector-icons/AntDesign';
 
 import { config } from '@/config/tamagui.config'
