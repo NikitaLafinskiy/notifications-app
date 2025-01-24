@@ -19,7 +19,7 @@ export default function RootLayout() {
                     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
                         <Stack>
                             <Stack.Screen name="index" options={{
-                                headerShown: true,
+                                title: "Home",
                                 headerRight: () => {
                                     return <Link href={"/create" as Href} asChild>
                                         <Pressable hitSlop={22}>

@@ -1,9 +1,10 @@
-import {createSlice} from "@reduxjs/toolkit";
+import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 
-type Todo = {
+export type Todo = {
     id: number,
     content: string,
-    completedAt: string | null
+    completedAt: string | null,
+    deadline: string
 }
 
 type TodoState = {
@@ -11,13 +12,16 @@ type TodoState = {
 }
 
 const initialState: TodoState = {
-    todos: [{id: 1, content: "mytodo", completedAt: null}, {id: 2, content: "mytodo2", completedAt: new Date().toISOString()}]
+    todos: []
 }
 
 export const todoSlice = createSlice({
     name: "todo",
     initialState,
     reducers: {
+        addTodo: (state: TodoState, action: PayloadAction<Todo>) => {
+            state.todos.push(action.payload)
+        }
     }
 })
 
