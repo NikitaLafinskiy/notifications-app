@@ -21,6 +21,10 @@ export const todoSlice = createSlice({
     reducers: {
         addTodo: (state: TodoState, action: PayloadAction<Todo>) => {
             state.todos.push(action.payload)
+        },
+        toggleCompletion: (state: TodoState, action: PayloadAction<number>) => {
+            const currentTodo = state.todos.find((todo) => todo.id === action.payload)!
+            currentTodo.completedAt = currentTodo.completedAt ? null : new Date().toISOString()
         }
     }
 })

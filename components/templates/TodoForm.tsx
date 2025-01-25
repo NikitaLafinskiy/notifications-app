@@ -8,6 +8,7 @@ import {Controller, useForm} from "react-hook-form";
 import {z} from "zod";
 import { zodResolver } from '@hookform/resolvers/zod';
 import {todoSchema} from "@/validators/todoDataValidator"
+import {globalTheme} from "@/const/globalTheme";
 
 export default function TodoForm() {
     const {control, handleSubmit, formState: {isSubmitting}} = useForm<z.infer<typeof todoSchema>>({
@@ -81,9 +82,9 @@ const styles = StyleSheet.create({
         width: "80%",
         padding: 16,
         borderWidth: 1,
-        borderRadius: 16,
-        borderColor: "#eee",
-        backgroundColor: "black",
+        borderRadius: 4,
+        borderColor: globalTheme.borderColor,
+        backgroundColor: globalTheme.backgroundColor,
         marginBottom: 100
     },
     input: {

@@ -20,6 +20,7 @@ export default function RootLayout() {
                         <Stack>
                             <Stack.Screen name="index" options={{
                                 title: "Home",
+                                headerBackVisible: false,
                                 headerRight: () => {
                                     return <Link href={"/create" as Href} asChild>
                                         <Pressable hitSlop={22}>

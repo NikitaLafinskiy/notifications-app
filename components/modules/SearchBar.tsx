@@ -13,17 +13,18 @@ export default function SearchBar({searchParam, onChangeText}: SearchBarProps) {
             onChangeText={onChangeText}
             keyboardType={"default"}
             value={searchParam}
+            placeholder={"Search..."}
         />
     </View>
 }
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center"
+        width: "100%",
+        marginVertical: 10
     },
     input: {
+        borderRadius: "50%",
         flex: 1
     }
 })
