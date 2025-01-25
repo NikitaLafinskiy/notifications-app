@@ -1,10 +1,11 @@
-import {createSlice, PayloadAction} from "@reduxjs/toolkit";
+import { createSlice, PayloadAction} from "@reduxjs/toolkit";
 
 export type Todo = {
     id: number,
     content: string,
     completedAt: string | null,
-    deadline: string
+    deadline: string,
+    notificationId: string | null,
 }
 
 type TodoState = {
@@ -22,9 +23,10 @@ export const todoSlice = createSlice({
         addTodo: (state: TodoState, action: PayloadAction<Todo>) => {
             state.todos.push(action.payload)
         },
-        toggleCompletion: (state: TodoState, action: PayloadAction<number>) => {
-            const currentTodo = state.todos.find((todo) => todo.id === action.payload)!
+        toggleCompletion: (state: TodoState, action: PayloadAction<Todo>) => {
+            const currentTodo = state.todos.find((todo) => todo.id === action.payload.id)!
             currentTodo.completedAt = currentTodo.completedAt ? null : new Date().toISOString()
+            currentTodo.notificationId = action.payload.notificationId;
         }
     }
 })

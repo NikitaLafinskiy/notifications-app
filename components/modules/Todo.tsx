@@ -1,9 +1,10 @@
 import {ListItem, View} from "tamagui";
 import {GestureResponderEvent, LayoutAnimation, Pressable, StyleSheet} from "react-native";
-import {Todo as TodoType, todoActions} from "@/store/slices/todo/todoSlice"
+import {Todo as TodoType} from "@/store/slices/todo/todoSlice"
 import Feather from '@expo/vector-icons/Feather';
 import {format} from "date-fns";
 import {useAppDispatch} from "@/store/hooks/useAppDispatch";
+import {toggleTodoCompletion} from "@/store/slices/todo/actions/toggleTodoCompletion";
 
 type TodoProps = {
     todo: TodoType;
@@ -19,8 +20,7 @@ export default function Todo({todo}: TodoProps) {
 
     const handleCheck = (e: GestureResponderEvent) => {
         LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
-        Haptics.
-        dispatch(todoActions.toggleCompletion(todo.id));
+        dispatch(toggleTodoCompletion(todo));
     }
 
     return <View style={styles.container}>

@@ -2,13 +2,14 @@ import {Button, Form, H4, Input, Label, Spinner} from 'tamagui'
 import {StyleSheet} from "react-native";
 import DateTimePicker from '@react-native-community/datetimepicker';
 import {useAppDispatch} from "@/store/hooks/useAppDispatch";
-import {Todo, todoActions} from "@/store/slices/todo/todoSlice";
+import {Todo} from "@/store/slices/todo/todoSlice";
 import {useRouter} from "expo-router";
 import {Controller, useForm} from "react-hook-form";
 import {z} from "zod";
 import { zodResolver } from '@hookform/resolvers/zod';
 import {todoSchema} from "@/validators/todoDataValidator"
 import {globalTheme} from "@/const/globalTheme";
+import {createTodo} from "@/store/slices/todo/actions/createTodo";
 
 export default function TodoForm() {
     const {control, handleSubmit, formState: {isSubmitting}} = useForm<z.infer<typeof todoSchema>>({
@@ -26,10 +27,11 @@ export default function TodoForm() {
         const todo: Todo = {
             id: Date.now(),
             completedAt: null,
+            notificationId: null,
             content: data.content,
             deadline: data.date.toISOString()
         }
-        dispatch(todoActions.addTodo(todo))
+        dispatch(createTodo(todo))
         router.replace("/")
     }
 
